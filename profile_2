@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev. Cat — Digital Craftsmanship</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Serif+JP:wght@200;300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --noir: #0A0A0A;
+            --surface: #141414;
+            --card: #1C1C1C;
+            --pearl: #F0EDE8;
+            --ash: #7A7A76;
+            --muted: #4A4A47;
+            --accent: #8A9A5B;
+            --accent-soft: rgba(138, 154, 91, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', 'Noto Serif JP', sans-serif;
+            background-color: var(--noir);
+            color: var(--pearl);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .serif {
+            font-family: 'Cormorant Garamond', 'Noto Serif JP', serif;
+            font-weight: 300;
+        }
+
+        /* ── Side Navigation ── */
+        .side-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 72px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2.5rem 0;
+            z-index: 1000;
+            border-right: 1px solid rgba(240, 237, 232, 0.06);
+        }
+
+        .side-nav .logo {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--pearl);
+            font-weight: 500;
+        }
+
+        .side-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .side-nav-links a {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            color: var(--ash);
+            text-decoration: none;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .side-nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .side-nav .scroll-hint {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            animation: pulse-down 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-down {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* ── Main Content ── */
+        main {
+            margin-left: 72px;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 5rem;
+        }
+
+        .hero-pretitle {
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-pretitle::before {
+            content: '';
+            display: inline-block;
+            width: 32px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 4.5vw, 4.2rem);
+            line-height: 1.3;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-sub {
+            color: var(--ash);
+            font-size: 0.95rem;
+            max-width: 400px;
+            line-height: 2;
+        }
+
+        .hero-right {
+            background: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-right::before {
+            content: '正射必中';
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(6rem, 12vw, 14rem);
+            font-weight: 200;
+            color: rgba(240, 237, 232, 0.03);
+            position: absolute;
+            white-space: nowrap;
+        }
+
+        .hero-emblem {
+            width: 120px;
+            height: 120px;
+            border: 1px solid rgba(138, 154, 91, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-emblem::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* ── Work Section ── */
+        .work {
+            padding: 8rem 5rem;
+            background: var(--surface);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: rgba(240, 237, 232, 0.06);
+        }
+
+        .project-showcase {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .project-meta {
+            position: sticky;
+            top: 6rem;
+        }
+
+        .project-number {
+            font-size: 0.7rem;
+            color: var(--muted);
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+        }
+
+        .project-title {
+            font-size: clamp(2rem, 3.5vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .project-desc {
+            color: var(--ash);
+            font-size: 0.95rem;
+            line-height: 2;
+            margin-bottom: 2.5rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--pearl);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.8rem 1.8rem;
+            border: 1px solid rgba(240, 237, 232, 0.15);
+            transition: all 0.4s ease;
+        }
+
+        .project-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        .project-link .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .project-link:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        .project-visual {
+            background: var(--card);
+            aspect-ratio: 4/3;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(240, 237, 232, 0.04);
+            border-radius: 3px;
+            pointer-events: none;
+        }
+
+        .project-visual-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: rgba(240, 237, 232, 0.06);
+            letter-spacing: 0.1em;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .tag {
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding: 0.4rem 1rem;
+            border: 1px solid rgba(240, 237, 232, 0.06);
+            border-radius: 100px;
+        }
+
+        /* ── Philosophy ── */
+        .philosophy {
+            padding: 10rem 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .philosophy::before {
+            content: '';
+            position: absolute;
+            width: 1px;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+            top: 3rem;
+        }
+
+        .philosophy-quote {
+            font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+            max-width: 700px;
+            text-align: center;
+            line-height: 2.2;
+            font-weight: 200;
+            color: var(--pearl);
+        }
+
+        .philosophy-quote em {
+            color: var(--accent);
+            font-style: normal;
+        }
+
+        /* ── Footer ── */
+        footer {
+            padding: 5rem;
+            border-top: 1px solid rgba(240, 237, 232, 0.06);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3rem;
+            align-items: end;
+        }
+
+        .footer-brand h2 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .footer-brand p {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+
+        .footer-contact {
+            text-align: center;
+        }
+
+        .contact-cta {
+            display: inline-block;
+            color: var(--pearl);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--accent);
+            transition: color 0.3s ease;
+        }
+
+        .contact-cta:hover {
+            color: var(--accent);
+        }
+
+        .footer-copy {
+            text-align: right;
+            font-size: 0.7rem;
+            color: var(--muted);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .side-nav {
+                display: none;
+            }
+
+            main {
+                margin-left: 0;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left {
+                padding: 8rem 2rem 4rem;
+            }
+
+            .hero-right {
+                min-height: 40vh;
+            }
+
+            .work {
+                padding: 5rem 2rem;
+            }
+
+            .project-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .project-meta {
+                position: static;
+            }
+
+            .philosophy {
+                padding: 6rem 2rem;
+            }
+
+            footer {
+                grid-template-columns: 1fr;
+                padding: 3rem 2rem;
+                text-align: left;
+            }
+
+            .footer-contact,
+            .footer-copy {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="side-nav">
+        <div class="logo">Dev. Cat</div>
+        <ul class="side-nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#philosophy">Philosophy</a></li>
+            <li><a href="mailto:your-email@example.com">Contact</a></li>
+        </ul>
+        <div class="scroll-hint"></div>
+    </nav>
+
+    <main>
+
+        <section class="hero">
+            <div class="hero-left">
+                <div class="hero-pretitle">Developer & Artisan</div>
+                <h1 class="hero-title serif">道具としての<br>デジタルを、<br>追求する。</h1>
+                <p class="hero-sub">
+                    凛とした空気感と、使い手に馴染む機能性。<br>
+                    弓道の精神をデジタルプロダクトに宿します。
+                </p>
+            </div>
+            <div class="hero-right">
+                <div class="hero-emblem"></div>
+            </div>
+        </section>
+
+        <section class="work" id="work">
+            <div class="section-header">
+                <span class="section-label">Featured Work</span>
+                <div class="section-line"></div>
+            </div>
+            <div class="project-showcase">
+                <div class="project-meta">
+                    <div class="project-number">01</div>
+                    <h3 class="project-title serif">qdBase</h3>
+                    <p class="project-desc">
+                        弓道の的中管理に特化した、静かで強力なツール。
+                        射手の集中を妨げず、記録を「写す」ためのミニマルな設計。
+                        日々の稽古に、確かな指標をもたらします。
+                    </p>
+                    <a href="https://apps.apple.com/jp/app/qdbase-%E5%BC%93%E9%81%93%E3%81%AE%E7%9A%84%E4%B8%AD%E7%AE%A1%E7%90%86%E3%81%AB%E7%89%B9%E5%8C%96%E3%81%97%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA/id6754814954" class="project-link" target="_blank">
+                        App Storeで見る <span class="arrow">→</span>
+                    </a>
+                </div>
+                <div>
+                    <div class="project-visual">
+                        <span class="project-visual-text">qdBase</span>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">iOS</span>
+                        <span class="tag">Swift</span>
+                        <span class="tag">弓道</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="philosophy" id="philosophy">
+            <div class="section-header" style="justify-content: center; margin-bottom: 5rem;">
+                <span class="section-label">Philosophy</span>
+            </div>
+            <p class="philosophy-quote serif">
+                <em>正射必中。</em><br>
+                正しいプロセスから、正しい結果が生まれる。<br>
+                コードの一行、ピクセルの一つにまで<br>
+                その精神を反映させ、<br>
+                時代に流されない普遍的な価値を持つ<br>
+                アプリケーションを。
+            </p>
+        </section>
+
+        <footer>
+            <div class="footer-brand">
+                <h2 class="serif">Dev. Cat</h2>
+                <p>Digital Craftsmanship</p>
+            </div>
+            <div class="footer-contact">
+                <a href="mailto:your-email@example.com" class="contact-cta">Connect via Email</a>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 Dev. Cat. All rights reserved.
+            </div>
+        </footer>
+
+    </main>
+
+</body>
+</html>
