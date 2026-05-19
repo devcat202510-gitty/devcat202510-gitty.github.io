@@ -1,0 +1,278 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --noir: #0F0F0F;
+    --pearl: #F9F9F7;
+    --ash: #8C8C88;
+    --smoke: #E2E2DF;
+    --accent: #8A9A5B; /* 弓道の静寂をイメージした落ち着いた緑（苔色） */
+}
+
+body {
+    font-family: 'DM Sans', 'Noto Serif JP', serif;
+    background-color: var(--pearl);
+    color: var(--noir);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+.serif {
+    font-family: 'Cormorant Garamond', 'Noto Serif JP', serif;
+    font-weight: 300;
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 2rem 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(249, 249, 247, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--noir);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* Hero */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10vw;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-pretitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1.2;
+    margin-bottom: 2.5rem;
+}
+
+.hero-subtitle {
+    color: var(--ash);
+}
+
+/* Work Section */
+.work {
+    padding: 10rem 0 10rem 10vw;
+    background: #fff;
+    overflow: hidden;
+}
+
+.section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-bottom: 5rem;
+}
+
+.work .section-label {
+    padding-right: 10vw;
+}
+
+.work-slider {
+    display: flex;
+    gap: 4rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    padding-right: 10vw;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.work-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.work-card {
+    flex: 0 0 450px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.app-visual {
+    background: var(--smoke);
+    width: 100%;
+    aspect-ratio: 16/10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-card:hover .app-visual {
+    transform: translateY(-4px);
+}
+
+.app-visual::after {
+    content: var(--app-name, "qdBase");
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    color: rgba(0, 0, 0, 0.04);
+    letter-spacing: 0.05em;
+}
+
+.app-visual--has-icon::after {
+    display: none;
+}
+
+.app-visual__icon {
+    width: auto;
+    height: min(80%, 14rem);
+    max-width: 80%;
+    object-fit: contain;
+    display: block;
+}
+
+.app-info-mini h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.25rem;
+    font-weight: 300;
+}
+
+.app-tag {
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.app-description-mini {
+    color: var(--ash);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Philosophy */
+.philosophy {
+    padding: 10rem 10vw;
+    text-align: center;
+}
+
+.philosophy .section-label {
+    text-align: center;
+}
+
+.philosophy-text {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 2;
+    font-weight: 200;
+}
+
+/* Footer */
+footer {
+    padding: 5rem 10vw;
+    border-top: 1px solid var(--smoke);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.footer-left h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-link {
+    color: var(--noir);
+    text-decoration: none;
+    border-bottom: 1px solid var(--noir);
+    padding-bottom: 2px;
+    font-size: 0.875rem;
+}
+
+.copyright {
+    font-size: 0.75rem;
+    color: var(--ash);
+}
+
+@media (max-width: 768px) {
+    .work {
+        padding: 6rem 0 6rem 6vw;
+    }
+
+    .work .section-label {
+        padding-right: 6vw;
+    }
+
+    .work-slider {
+        gap: 2rem;
+        padding-right: 6vw;
+    }
+
+    .work-card {
+        flex: 0 0 80vw;
+    }
+
+    .app-info-mini h3 {
+        font-size: 1.5rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3rem;
+    }
+}

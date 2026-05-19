@@ -7,200 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Serif+JP:wght@200;400&family=DM+Sans:wght@400&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --noir: #0F0F0F;
-            --pearl: #F9F9F7;
-            --ash: #8C8C88;
-            --smoke: #E2E2DF;
-            --accent: #8A9A5B; /* 弓道の静寂をイメージした落ち着いた緑（苔色） */
-        }
-
-        body {
-            font-family: 'DM Sans', 'Noto Serif JP', serif;
-            background-color: var(--pearl);
-            color: var(--noir);
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .serif {
-            font-family: 'Cormorant Garamond', 'Noto Serif JP', serif;
-            font-weight: 300;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 2rem 5vw;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(249, 249, 247, 0.8);
-            backdrop-filter: blur(10px);
-        }
-
-        .logo {
-            font-size: 1rem;
-            letter-spacing: 0.2em;
-            font-weight: 400;
-            text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--noir);
-            text-decoration: none;
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Hero */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 10vw;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero-pretitle {
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--ash);
-            margin-bottom: 2rem;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            line-height: 1.2;
-            margin-bottom: 2.5rem;
-        }
-
-        /* Work Section */
-        .work {
-            padding: 10rem 10vw;
-            background: #fff;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--ash);
-            margin-bottom: 5rem;
-        }
-
-        .app-card {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .app-info h3 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-        }
-
-        .app-description {
-            color: var(--ash);
-            margin-bottom: 3rem;
-            font-size: 1rem;
-            max-width: 450px;
-        }
-
-        .app-visual {
-            background: var(--smoke);
-            aspect-ratio: 16/9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            border-radius: 2px;
-        }
-
-        .app-visual::after {
-            content: "qdBase";
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 4rem;
-            color: rgba(0,0,0,0.05);
-        }
-
-        /* Philosophy */
-        .philosophy {
-            padding: 10rem 10vw;
-            text-align: center;
-        }
-
-        .philosophy-text {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 2;
-            font-weight: 200;
-        }
-
-        /* Footer */
-        footer {
-            padding: 5rem 10vw;
-            border-top: 1px solid var(--smoke);
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        .footer-left h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-link {
-            color: var(--noir);
-            text-decoration: none;
-            border-bottom: 1px solid var(--noir);
-            padding-bottom: 2px;
-            font-size: 0.875rem;
-        }
-
-        .copyright {
-            font-size: 0.75rem;
-            color: var(--ash);
-        }
-
-        @media (max-width: 768px) {
-            .app-card { grid-template-columns: 1fr; gap: 3rem; }
-            .nav-links { display: none; }
-            footer { flex-direction: column; align-items: flex-start; gap: 3rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -209,53 +16,73 @@
         <ul class="nav-links">
             <li><a href="#work">Work</a></li>
             <li><a href="#philosophy">Philosophy</a></li>
-            <li><a href="mailto:your-email@example.com">Contact</a></li>
         </ul>
     </nav>
 
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-pretitle">Developer & Artisan</div>
-            <h1 class="hero-title serif">道具としての<br>デジタルを、追求する。</h1>
-            <p style="color: var(--ash);">凛とした空気感と、使い手に馴染む機能性。<br>弓道の精神をデジタルプロダクトに宿します。</p>
+            <div class="hero-pretitle">Dev. Cat Profile</div>
+            <h1 class="hero-title serif">プロフィール準備中</h1>
+            <p class="hero-subtitle">広告募集中、お待ちしています。</p>
         </div>
     </section>
 
     <section class="work" id="work">
         <div class="section-label">Featured Work</div>
-        <div class="app-card">
-            <div class="app-info">
-                <h3 class="serif">qdBase</h3>
-                <p class="app-description">
-                    弓道の的中管理に特化した、静かで強力なツール。
-                    射手の集中を妨げず、記録を「写す」ためのミニマルな設計。
-                    日々の稽古に、確かな指標をもたらします。
-                </p>
-                <a href="https://apps.apple.com/jp/app/qdbase-%E5%BC%93%E9%81%93%E3%81%AE%E7%9A%84%E4%B8%AD%E7%AE%A1%E7%90%86%E3%81%AB%E7%89%B9%E5%8C%96%E3%81%97%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA/id6754814954" class="contact-link" target="_blank">App Storeで見る</a>
-            </div>
-            <div class="app-visual">
+
+        <div class="work-slider">
+
+            <div class="work-card">
+                <div class="app-visual app-visual--has-icon">
+                    <img src="img/icon.svg" alt="" class="app-visual__icon" width="685" height="687">
                 </div>
+                <div class="app-info-mini">
+                    <h3 class="serif">QDBase</h3>
+                    <p class="app-tag">iOS App</p>
+                    <p class="app-description-mini">弓道の的中管理に特化した、静かで強力なツール。直感的な操作で日々の練習記録をサポートします。</p>
+                    <a href="https://apps.apple.com/jp/app/qdbase-%E5%BC%93%E9%81%93%E3%81%AE%E7%9A%84%E4%B8%AD%E7%AE%A1%E7%90%86%E3%81%AB%E7%89%B9%E5%8C%96%E3%81%97%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA/id6754814954" class="contact-link" target="_blank" rel="noopener noreferrer">App Store</a>
+                </div>
+            </div>
+
+            <div class="work-card">
+                <div class="app-visual" style="--app-name: 'Matme!';"></div>
+                <div class="app-info-mini">
+                    <h3 class="serif">Matme!</h3>
+                    <p class="app-tag">iOS App</p>
+                    <p class="app-description-mini">日々のタスクをマップで整理するミニマルな管理ツール。煩雑なタスクの優先付けとはおさらばです。</p>
+                    <a href="#" class="contact-link">Coming Soon</a>
+                </div>
+            </div>
+
+            <div class="work-card">
+                <div class="app-visual" style="--app-name: 'linglo';"></div>
+                <div class="app-info-mini">
+                    <h3 class="serif">linglo</h3>
+                    <p class="app-tag">iOS App / Web App</p>
+                    <p class="app-description-mini">全ての外国語学習者に向けた単語帳アプリ。</p>
+                    <a href="#" class="contact-link">Coming Soon</a>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <section class="philosophy" id="philosophy">
         <div class="section-label">Philosophy</div>
         <p class="philosophy-text serif">
-            正射必中。正しいプロセスから、正しい結果が生まれる。<br>
-            コードの一行、ピクセルの一つにまでその精神を反映させ、<br>
-            時代に流されない普遍的な価値を持つアプリケーションを。
+            フィロソフィー募集中。
         </p>
     </section>
 
     <footer>
         <div class="footer-left">
             <h2 class="serif">Dev. Cat</h2>
-            <a href="mailto:your-email@example.com" class="contact-link">Connect via Email</a>
         </div>
         <div class="copyright">
             &copy; 2026 Dev. Cat. All rights reserved.
         </div>
     </footer>
 
+    <script src="js/main.js" defer></script>
 </body>
 </html>
