@@ -8,3 +8,7 @@
 .vscode/
 *.swp
 *~
+
+# Unused / local-only assets
+img/Union.png
+img/kafo-icon-full.svg
